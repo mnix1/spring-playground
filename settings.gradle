@@ -1,0 +1,4 @@
+rootProject.name = 'spring-playground'
+
+include 'mvc'
+include 'security'
