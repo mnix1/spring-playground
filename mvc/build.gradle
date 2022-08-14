@@ -1,5 +1,4 @@
 plugins {
-    id 'org.springframework.boot' version '2.7.2'
     id 'io.spring.dependency-management' version '1.0.12.RELEASE'
     id 'java'
 }
@@ -13,8 +12,8 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework:spring-web:5.3.22'
+    implementation 'org.springframework:spring-webmvc:5.3.22'
 }
 
 tasks.named('test') {
