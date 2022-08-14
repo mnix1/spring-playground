@@ -9,12 +9,15 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'com.example:boot-starter:0.13'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'com.example:boot-starter-test:0.0.1'
 }
 
 tasks.named('test') {
