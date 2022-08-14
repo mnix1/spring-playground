@@ -1,21 +1,29 @@
 plugins {
     id 'io.spring.dependency-management' version '1.0.12.RELEASE'
     id 'java'
+    id 'application'
+    id "com.github.johnrengelman.shadow" version "7.1.2"
 }
 
 group = 'com.example'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
-
+version = '0.0.1'
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+mainClassName = 'com.example.mvc.Main'
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '8.0.47'
+//    compileOnly group: 'javax', name: 'javaee-api', version: '8.0.1'
+//    compileOnly group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+//    compileOnly group: 'javax.servlet.jsp', name: 'javax.servlet.jsp-api', version: '2.3.3'
+    implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
     implementation 'org.springframework:spring-web:5.3.22'
     implementation 'org.springframework:spring-webmvc:5.3.22'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.3'
 }
-
 tasks.named('test') {
     useJUnitPlatform()
 }
