@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'com.example.javaee'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '8.0.47'
+//    compileOnly('javax:javaee-api:8.0.1')
+}
