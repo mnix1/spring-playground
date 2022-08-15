@@ -7,7 +7,12 @@ import org.springframework.context.annotation.Configuration;
 class RolesAutoConfiguration {
 
     @Bean
-    RoleClient roles() {
+    RoleClient roleClient() {
         return new RoleClient();
+    }
+
+    @Bean
+    RoleService roleService() {
+        return new RoleService();
     }
 }
