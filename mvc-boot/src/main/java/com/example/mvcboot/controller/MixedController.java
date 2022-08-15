@@ -1,4 +1,4 @@
-package com.example.mvcboot;
+package com.example.mvcboot.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

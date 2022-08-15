@@ -1,4 +1,4 @@
-package com.example.mvcboot;
+package com.example.mvcboot.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
