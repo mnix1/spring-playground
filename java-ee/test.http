@@ -1,0 +1,12 @@
+### wildfly
+GET http://localhost:8080/java-ee-1.0
+###
+GET http://localhost:8080/java-ee-1.0/api/main
+###
+GET http://localhost:8080/java-ee-1.0/api/hello-servlet
+### tomcat
+GET http://localhost:8080
+###
+GET http://localhost:8080/api/main
+###
+GET http://localhost:8080/api/hello-servlet
