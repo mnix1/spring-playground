@@ -1,26 +1,39 @@
+import org.springframework.boot.gradle.plugin.SpringBootPlugin
+
 plugins {
-    id 'org.springframework.boot' version '2.7.2'
+    id 'org.springframework.boot' version '2.7.2'  apply false
     id 'io.spring.dependency-management' version '1.0.12.RELEASE'
     id 'java'
+    id 'java-library'
+    id 'maven-publish'
 }
 
-group = 'com.example.exercise1'
-version = '0.0.1'
+group = 'com.example'
+version = '0.1'
 sourceCompatibility = '17'
 
 repositories {
     mavenLocal()
     mavenCentral()
 }
-
+publishing {
+    publications {
+        maven(MavenPublication) {
+            artifact jar
+        }
+    }
+}
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'com.example:boot-starter:0.13'
-    implementation 'com.example:exercise-1-starter:0.1'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
-
+dependencyManagement {
+    imports {
+        mavenBom SpringBootPlugin.BOM_COORDINATES
+    }
+}
 tasks.named('test') {
     useJUnitPlatform()
 }
