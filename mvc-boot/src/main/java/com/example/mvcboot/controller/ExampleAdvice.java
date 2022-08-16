@@ -4,7 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-@ControllerAdvice(assignableTypes = {ViewController.class, MixedController.class})
+@ControllerAdvice(assignableTypes = {MixedController.class})
 class ExampleAdvice {
     @ExceptionHandler(MixedController.DuplicateException.class)
     public ResponseEntity<String> handle(MixedController.DuplicateException ex) {

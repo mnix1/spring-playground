@@ -13,12 +13,14 @@ import java.io.IOException;
 @Controller
 @RequestMapping("/view")
 class ViewController {
+    //can return string as view name
     @GetMapping("/string")
     public String string(Model model) {
         model.addAttribute("message", "Hello Spring MVC Framework!");
         return "hello-view";
     }
 
+    //can return ModelAndView
     @GetMapping("/model-and-view")
     @ResponseStatus(HttpStatus.I_AM_A_TEAPOT)
     public ModelAndView modelAndView() {

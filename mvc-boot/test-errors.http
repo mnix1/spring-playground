@@ -1,0 +1,14 @@
+### ERRORS @ResponseStatus(HttpStatus.NOT_FOUND)
+GET http://localhost:8080/mixed/not-found
+###
+GET http://localhost:8080/mixed/internal-server-error
+### @ExceptionHandler
+GET http://localhost:8080/mixed/io-exception
+### TODO what will happen here?
+GET http://localhost:8080/view/io-exception
+### @ControllerAdvice @ExceptionHandler
+GET http://localhost:8080/mixed/duplicate
+### @ControllerAdvice @ExceptionHandler
+GET http://localhost:8080/view/duplicate
+### spring exception with proper status
+GET http://localhost:8080/aaa

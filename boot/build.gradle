@@ -1,5 +1,10 @@
 plugins {
-    id 'org.springframework.boot' version '2.7.2'
+    id 'org.springframework.boot' version '2.7.2'//TODO omówić
+    //brak wersji w dependencies spring boota
+    //taski:
+    // bootRun
+    // bootJar
+    // bootBuildImage
     id 'io.spring.dependency-management' version '1.0.12.RELEASE'
     id 'java'
 }

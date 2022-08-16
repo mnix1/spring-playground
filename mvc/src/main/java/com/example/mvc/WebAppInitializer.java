@@ -13,6 +13,7 @@ class WebAppInitializer implements WebApplicationInitializer {
 
     @Override
     public void onStartup(ServletContext ctx) throws ServletException {
+        //TODO omówić
         AnnotationConfigWebApplicationContext webCtx = new AnnotationConfigWebApplicationContext();
         webCtx.register(WebConfig.class);
         webCtx.setServletContext(ctx);

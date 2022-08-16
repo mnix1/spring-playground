@@ -12,3 +12,8 @@
 <a href="api/main">Main Servlet</a>
 </body>
 </html>
+<%--TODO omówić
+składnia nie kompatybilna z HTML
+kompilacja na serwlet
+https://pl.wikipedia.org/wiki/JavaServer_Pages
+--%>
