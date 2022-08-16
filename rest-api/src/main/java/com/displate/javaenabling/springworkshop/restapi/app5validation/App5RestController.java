@@ -5,12 +5,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @Slf4j
 class App5RestController {
 
     @PostMapping(value = "/validated-form")
-    void postForm(@RequestBody ValidatedFormDTO formDTO) {
+    void postForm(@Valid @RequestBody ValidatedFormDTO formDTO) {
         log.info("All good");
     }
 }
