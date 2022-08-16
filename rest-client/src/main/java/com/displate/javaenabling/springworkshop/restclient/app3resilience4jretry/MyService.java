@@ -1,5 +1,8 @@
 package com.displate.javaenabling.springworkshop.restclient.app3resilience4jretry;
 
+import io.github.resilience4j.core.IntervalFunction;
+import io.github.resilience4j.retry.Retry;
+import io.github.resilience4j.retry.RetryConfig;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -15,9 +18,18 @@ class MyService {
     ExternalApi externalApi;
 
     List<UserDTO> getUsers() throws Throwable {
-        return doGetUsers();
+        return retry()
+                .executeCheckedSupplier(this::doGetUsers);
 
     }
+
+    private Retry retry() {
+        return Retry.of("externalApi", RetryConfig.custom()
+                .maxAttempts(4)
+                .intervalFunction(IntervalFunction.ofExponentialBackoff())
+                .build());
+    }
+
     private List<UserDTO> doGetUsers() throws Exception {
         log.info("Getting users");
         Response<List<UserDTO>> response = externalApi.getUsers().execute();
