@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.function.Predicate;
 
 @Configuration
+@EnableValidator
 class MyConfiguration {
     @Bean
     SomeClass someClass(Predicate<String> validator) {
