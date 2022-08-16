@@ -1,5 +1,11 @@
 package com.displate.javaenabling.springworkshop.restclient.app4circuitbreaker;
 
+import io.github.resilience4j.circuitbreaker.CircuitBreaker;
+import io.github.resilience4j.circuitbreaker.CircuitBreakerConfig;
+import io.github.resilience4j.core.IntervalFunction;
+import io.github.resilience4j.decorators.Decorators;
+import io.github.resilience4j.retry.Retry;
+import io.github.resilience4j.retry.RetryConfig;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -15,7 +21,27 @@ class MyService {
     ExternalApi externalApi;
 
     List<UserDTO> getUsers() throws Throwable {
-        return doGetUsers();
+
+        return Decorators.ofCheckedSupplier(this::doGetUsers)
+                .withCircuitBreaker(circuitBreaker())
+                .withRetry(retry())
+                .decorate()
+                .recover(it -> this::fallbackResponse)
+                .apply();
+
+    }
+
+    private CircuitBreaker circuitBreaker() {
+        return CircuitBreaker.of("externalApi", CircuitBreakerConfig.custom()
+                .minimumNumberOfCalls(10)
+                .build());
+    }
+
+    private Retry retry() {
+        return Retry.of("externalApi", RetryConfig.custom()
+                .maxAttempts(20)
+                .intervalFunction(IntervalFunction.of(1))
+                .build());
     }
 
     private List<UserDTO> doGetUsers() throws Exception {
