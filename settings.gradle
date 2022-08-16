@@ -9,3 +9,7 @@ include 'security'
 include 'mvc'
 include 'mvc-boot'
 include 'exercise-1'
+
+include 'context'
+include 'rest-api'
+include 'rest-client'
