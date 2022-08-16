@@ -14,7 +14,8 @@ class MyConfiguration {
 
     @Bean
     MyService myService(@Value("${external.api.port}") long port) {
-        return new MyService(createRetrofit(port).create(ExternalApi.class));
+        return new MyService(createRetrofit(port).create(ExternalApi.class),
+                createRetryTemplate());
     }
 
     private Retrofit createRetrofit(long port) {
@@ -22,5 +23,14 @@ class MyConfiguration {
                 .baseUrl("http://localhost:%s".formatted(port))
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();
+    }
+
+    private RetryTemplate createRetryTemplate() {
+        RetryTemplate result = new RetryTemplate();
+        result.setBackOffPolicy(new ExponentialBackOffPolicy());
+        SimpleRetryPolicy retryPolicy = new SimpleRetryPolicy();
+        retryPolicy.setMaxAttempts(4);
+        result.setRetryPolicy(retryPolicy);
+        return result;
     }
 }

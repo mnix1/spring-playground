@@ -14,9 +14,10 @@ import java.util.List;
 @Slf4j
 class MyService {
     ExternalApi externalApi;
+    RetryTemplate retryTemplate;
 
     List<UserDTO> getUsers() throws Exception {
-        return doGetUsers();
+        return retryTemplate.execute(context -> doGetUsers());
     }
 
     private List<UserDTO> doGetUsers() throws Exception {
