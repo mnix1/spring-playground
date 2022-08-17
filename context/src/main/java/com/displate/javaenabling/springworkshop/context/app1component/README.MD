@@ -1,0 +1,1 @@
+Use `@org.springframework.stereotype.Component` to add UserRepository to spring context

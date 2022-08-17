@@ -10,9 +10,4 @@ class RolesAutoConfiguration {
     RoleClient roleClient() {
         return new RoleClient();
     }
-
-    @Bean
-    RoleService roleService() {
-        return new RoleService();
-    }
 }

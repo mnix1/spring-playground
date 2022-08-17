@@ -22,7 +22,7 @@ public class Main {
 
         String contextPath = "api";
         String docBase = new File(".").getAbsolutePath();
-//
+
         Context context = tomcat.addContext(contextPath, docBase);
 
         tomcat.addServlet(contextPath, "helloServlet", new HelloServlet());
