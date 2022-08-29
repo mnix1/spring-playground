@@ -2,6 +2,7 @@ package com.example.security;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +25,12 @@ class JSONController {
     }
 
     @GetMapping("/user")
-    public UserDetails user(@AuthenticationPrincipal UserDetails currentUser) {
-        return currentUser;
+    public Authentication user(Authentication authentication) {
+        return authentication;
+    }
+
+    @GetMapping("/hello")
+    public String hello(Authentication authentication) {
+        return "Hello, " + authentication.getName() + "!";
     }
 }

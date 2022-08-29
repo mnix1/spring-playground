@@ -28,3 +28,4 @@ class JSONController {
         return currentUser;
     }
 }
+
