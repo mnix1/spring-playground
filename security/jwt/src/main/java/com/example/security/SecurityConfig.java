@@ -39,7 +39,10 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeHttpRequests((authorize) -> authorize.anyRequest().authenticated())
+                .authorizeHttpRequests((authorize) -> {
+                    authorize.antMatchers("/json").permitAll();
+                    authorize.anyRequest().authenticated();
+                })
                 .csrf((csrf) -> csrf.ignoringAntMatchers("/token"))
                 .httpBasic(Customizer.withDefaults())
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)

@@ -2,6 +2,7 @@ package com.example.security;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,14 @@ class JSONController {
     }
 
     @GetMapping("/user")
+    @PreAuthorize("hasRole('ROLE_USER')")
     public CustomUser user(@AuthenticationPrincipal CustomUser currentUser) {
+        return currentUser;
+    }
+
+    @GetMapping("/admin")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public CustomUser admin(@AuthenticationPrincipal CustomUser currentUser) {
         return currentUser;
     }
 }

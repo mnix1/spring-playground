@@ -24,14 +24,16 @@ public class CustomUser {
 	private final long id;
 
 	private final String email;
+	private final boolean admin;
 
 	@JsonIgnore
 	private final String password;
 
 	@JsonCreator
-	public CustomUser(long id, String email, String password) {
+	public CustomUser(long id, String email, boolean admin, String password) {
 		this.id = id;
 		this.email = email;
+		this.admin = admin;
 		this.password = password;
 	}
 
@@ -47,4 +49,7 @@ public class CustomUser {
 		return this.password;
 	}
 
+	public boolean isAdmin() {
+		return admin;
+	}
 }

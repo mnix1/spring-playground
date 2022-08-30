@@ -24,9 +24,14 @@ class JSONController {
         return map;
     }
 
-    @GetMapping("/user")
-    public Authentication user(Authentication authentication) {
+    @GetMapping("/auth")
+    public Authentication auth(Authentication authentication) {
         return authentication;
+    }
+
+    @GetMapping("/user")
+    public UserDetails user(@AuthenticationPrincipal UserDetails currentUser) {
+        return currentUser;
     }
 
     @GetMapping("/hello")
