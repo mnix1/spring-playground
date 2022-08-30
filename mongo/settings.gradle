@@ -1,0 +1,6 @@
+include 'mongo-common-test'
+include 'mongo-1-repository'
+include 'mongo-2-template'
+include 'mongo-3-hybrid'
+include 'mongo-4-index'
+include 'mongo-5-transactions'

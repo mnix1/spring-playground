@@ -1,0 +1,36 @@
+import org.springframework.boot.gradle.plugin.SpringBootPlugin
+
+plugins {
+	id 'org.springframework.boot' version '2.7.2' apply false
+	id 'io.spring.dependency-management' version '1.0.12.RELEASE'
+	id 'java'
+	id 'java-library'
+}
+
+group = 'com.displate.java-enabling.spring-workshop'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+repositories {
+	mavenCentral()
+}
+
+ext {
+	set('testcontainersVersion', "1.17.3")
+}
+
+dependencyManagement {
+	imports {
+		mavenBom SpringBootPlugin.BOM_COORDINATES
+	}
+}
+
+dependencies {
+	implementation "org.testcontainers:junit-jupiter:${testcontainersVersion}"
+	implementation "org.testcontainers:mongodb:${testcontainersVersion}"
+	implementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

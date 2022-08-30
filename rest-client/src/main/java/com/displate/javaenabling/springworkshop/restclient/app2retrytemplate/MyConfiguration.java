@@ -17,6 +17,16 @@ class MyConfiguration {
         return new MyService(createRetrofit(port).create(ExternalApi.class));
     }
 
+    @Bean
+    RetryTemplate createRetryTemplate() {
+        RetryTemplate result = new RetryTemplate();
+        result.setBackOffPolicy(new ExponentialBackOffPolicy());
+        SimpleRetryPolicy retryPolicy = new SimpleRetryPolicy();
+        retryPolicy.setMaxAttempts(4);
+        result.setRetryPolicy(retryPolicy);
+        return result;
+    }
+
     private Retrofit createRetrofit(long port) {
         return new Retrofit.Builder()
                 .baseUrl("http://localhost:%s".formatted(port))

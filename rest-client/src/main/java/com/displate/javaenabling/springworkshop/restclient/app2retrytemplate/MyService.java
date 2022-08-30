@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.retry.annotation.Retryable;
 import org.springframework.retry.support.RetryTemplate;
 import retrofit2.Response;
 
@@ -15,6 +16,7 @@ import java.util.List;
 class MyService {
     ExternalApi externalApi;
 
+    @Retryable
     List<UserDTO> getUsers() throws Exception {
         return doGetUsers();
     }
