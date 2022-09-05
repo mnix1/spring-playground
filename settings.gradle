@@ -8,6 +8,7 @@ include 'java-ee'
 include 'security'
 include 'mvc'
 include 'mvc-boot'
+include 'data-jdbc'
 include 'exercise-1'
 
 include 'context'
