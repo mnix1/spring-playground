@@ -13,6 +13,7 @@ include 'security:ldap'
 include 'security:oauth2'
 include 'mvc'
 include 'mvc-boot'
+include 'data-jdbc'
 include 'exercise-1'
 
 include 'context'
