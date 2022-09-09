@@ -37,3 +37,6 @@ out/
 .vscode/
 
 **/build/
+
+tomcat.8080
+**/application-local.yaml
