@@ -1,0 +1,15 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+    health:
+      group:
+        custom:
+          include: diskSpace,ping
+  endpoint:
+    health:
+      group:
+        custom:
+          show-components: always
+          show-details: always

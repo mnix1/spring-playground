@@ -1,0 +1,61 @@
+//lists security audit-related events such as user login/logout. Also, we can filter by principal or type among other fields.
+http://localhost:8080/actuator
+###
+//lists security audit-related events such as user login/logout. Also, we can filter by principal or type among other fields.
+http://localhost:8080/actuator/auditevents
+###
+//returns all available beans in our BeanFactory. Unlike /auditevents, it doesn't support filtering.
+http://localhost:8080/actuator/beans
+###
+// formerly known as /autoconfig, builds a report of conditions around autoconfiguration.
+http://localhost:8080/actuator/conditions
+###
+//allows us to fetch all @ConfigurationProperties beans.
+http://localhost:8080/actuator/configprops
+###
+//returns the current environment properties. Additionally, we can retrieve single properties.
+http://localhost:8080/actuator/env
+###
+//provides details about our Flyway database migrations.
+http://localhost:8080/actuator/flyway
+###
+//summarizes the health status of our application.
+http://localhost:8080/actuator/health
+###
+//builds and returns a heap dump from the JVM used by our application.
+http://localhost:8080/actuator/heapdump
+###
+//returns general information. It might be custom data, build information or details about the latest commit.
+http://localhost:8080/actuator/info
+###
+//behaves like /flyway but for Liquibase.
+http://localhost:8080/actuator/liquibase
+###
+//returns ordinary application logs.
+http://localhost:8080/actuator/logfile
+###
+//enables us to query and modify the logging level of our application.
+http://localhost:8080/actuator/loggers
+###
+//details metrics of our application. This might include generic metrics as well as custom ones.
+http://localhost:8080/actuator/metrics
+###
+http://localhost:8080/actuator/metrics/jvm.memory.used
+###
+//returns metrics like the previous one, but formatted to work with a Prometheus server.
+http://localhost:8080/actuator/prometheus
+###
+//provides details about every scheduled task within our application.
+http://localhost:8080/actuator/scheduledtasks
+###
+//lists HTTP sessions given we are using Spring Session.
+http://localhost:8080/actuator/sessions
+###
+//performs a graceful shutdown of the application.
+http://localhost:8080/actuator/shutdown
+###
+//dumps the thread information of the underlying JVM.
+http://localhost:8080/actuator/threaddump
+###
+//endpoints
+http://localhost:8080/actuator/mappings
