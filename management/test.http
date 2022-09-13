@@ -59,3 +59,18 @@ http://localhost:8080/actuator/threaddump
 ###
 //endpoints
 http://localhost:8080/actuator/mappings
+###
+//custom endpoint
+http://localhost:8080/actuator/features
+###
+//custom endpoint
+http://localhost:8080/actuator/features/test
+###
+POST http://localhost:8080/actuator/features/test
+Content-Type: application/json
+
+{
+  "enabled": true
+}
+###
+DELETE http://localhost:8080/actuator/features/test
