@@ -37,10 +37,8 @@ public class ApplicationTest {
 
     @Test
     void userWhenNotAuthenticated() throws Exception {
-        // @formatter:off
         this.mockMvc.perform(get("/user"))
                 .andExpect(status().isUnauthorized());
-        // @formatter:on
     }
 
     /**
@@ -52,11 +50,9 @@ public class ApplicationTest {
     @Test
     @WithUserDetails("user@example.com")
     void userWhenWithUserDetailsThenOk() throws Exception {
-        // @formatter:off
         this.mockMvc.perform(get("/user"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", equalTo(1)));
-        // @formatter:on
     }
 
     /**
@@ -66,11 +62,9 @@ public class ApplicationTest {
     @Test
     @WithUser
     void userWhenWithUserThenOk() throws Exception {
-        // @formatter:off
         this.mockMvc.perform(get("/user"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", equalTo(1)));
-        // @formatter:on
     }
 
     /**
@@ -81,13 +75,11 @@ public class ApplicationTest {
      * use it for testing here.
      */
     @Test
-    @WithMockCustomUser(email = "admin@example.com")
+    @WithMockCustomUser(email = "ignacy@example.com")
     void userWhenWithMockCustomUserThenOk() throws Exception {
-        // @formatter:off
         this.mockMvc.perform(get("/user"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.email", equalTo("admin@example.com")));
-        // @formatter:on
+                .andExpect(jsonPath("$.email", equalTo("ignacy@example.com")));
     }
 
     /**
@@ -96,13 +88,11 @@ public class ApplicationTest {
      * error prone.
      */
     @Test
-    @WithMockCustomUser(email = "admin@example.com")
+    @WithMockCustomAdmin
     void userWhenWithMockCustomAdminThenOk() throws Exception {
-        // @formatter:off
         this.mockMvc.perform(get("/user"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.email", equalTo("admin@example.com")));
-        // @formatter:on
     }
 
 }

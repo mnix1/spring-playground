@@ -1,0 +1,1 @@
+https://www.linkedin.com/pulse/how-does-spring-security-works-internally-ayush-jain#:~:text=Authentication%20Object%3A%20Object%20that%20is,the%20role%20of%20that%20user.
