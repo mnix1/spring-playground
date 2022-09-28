@@ -13,3 +13,4 @@ management:
         custom:
           show-components: always
           show-details: always
+      show-details: always
